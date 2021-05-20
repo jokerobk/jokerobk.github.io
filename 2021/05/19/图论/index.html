@@ -13,10 +13,12 @@
 <meta property="og:site_name" content="I believe we can fly up in the blue sky">
 <meta property="og:description" content="链式前向星#include &lt;iostream&gt; #include &lt;algorithm&gt; #include &lt;cstdio&gt; using namespace std; int n, m, flag; const int N &#x3D; 5000005; int head[N], tot; struct edge &amp;#123;     int to, next, w;">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/jokerobk/joker1234.github.io/blob/main/images/%E6%88%AA%E5%B1%8F2021-05-20%2022.47.26.png?raw=true">
 <meta property="article:published_time" content="2021-05-19T14:05:58.000Z">
-<meta property="article:modified_time" content="2021-05-20T11:40:34.034Z">
+<meta property="article:modified_time" content="2021-05-20T15:23:59.416Z">
 <meta property="article:author" content="桜">
-<meta name="twitter:card" content="summary"><script src="/js/ui/mode.js"></script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="Table of Contents"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="Overview"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info mickey-mouse"><a class="site-author-avatar" href="/about/" title="桜"><img width="96" loading="lazy" src="/images/avatar.jpg" alt="桜"></a><div class="site-author-name"><a href="/about/">桜</a></div><span class="site-name">I believe we can fly up in the blue sky</span><sub class="site-subtitle"></sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="Home"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="Archives"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">3</span></a></div><div class="site-state-item"><a href="/categories/" title="Categories"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">0</span></a></div><div class="site-state-item"><a href="/tags/" title="Tags"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">0</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/jokerobk" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=275916722" title="网易云音乐" target="_blank" style="color:#C20C0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/129067632" title="哔哩哔哩" target="_blank" style="color:#FF8EB3"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-bilibili-line"></use></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" target="_blank" rel="noopener" href="https://www.youtube.com" title="油管" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-contrast-2-line"></use></svg></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F"><span class="toc-number">1.</span> <span class="toc-text">链式前向星</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88"><span class="toc-number">2.</span> <span class="toc-text">最近公共祖先</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%B4%E7%B4%A0%E5%86%99%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">朴素写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#deep%E5%86%99%E6%B3%95"><span class="toc-number">2.2.</span> <span class="toc-text">deep写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%80%8D%E5%A2%9E%E6%B3%95"><span class="toc-number">2.3.</span> <span class="toc-text">倍增法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%91%E4%B8%8A%E5%B7%AE%E5%88%86"><span class="toc-number">3.</span> <span class="toc-text">树上差分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%82%E8%B7%AF%E5%BE%84%E4%B8%8A%E7%9A%84%E7%82%B9%E7%9A%84%E6%9D%83%E5%80%BC"><span class="toc-number">3.1.</span> <span class="toc-text">求路径上的点的权值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%82%E8%B7%AF%E5%BE%84%E4%B8%8A%E7%9A%84%E8%BE%B9%E7%9A%84%E6%9D%83%E5%80%BC"><span class="toc-number">3.2.</span> <span class="toc-text">求路径上的边的权值</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tarjan%E6%B1%82%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F"><span class="toc-number">4.</span> <span class="toc-text">tarjan求强连通分量</span></a></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://jokerobk.github.io/2021/05/19/%E5%9B%BE%E8%AE%BA/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="桜"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="I believe we can fly up in the blue sky"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">图论</h1><div class="post-meta"><div class="post-time" style="display:inline-block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="Created: 2021-05-19 22:05:58" itemprop="dateCreated datePublished" datetime="2021-05-19T22:05:58+08:00">2021-05-19</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"></use></svg></span> <time title="Modified: 2021-05-20 19:40:34" itemprop="dateModified" datetime="2021-05-20T19:40:34+08:00">2021-05-20</time></div><div class="post-classify"></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;"><h1 id="链式前向星"><a href="#链式前向星" class="headerlink" title="链式前向星"></a>链式前向星</h1><pre><code class="bash">#include &lt;iostream&gt;
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/jokerobk/joker1234.github.io/blob/main/images/%E6%88%AA%E5%B1%8F2021-05-20%2022.47.26.png?raw=true"><script src="/js/ui/mode.js"></script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="Table of Contents"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="Overview"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info mickey-mouse"><a class="site-author-avatar" href="/about/" title="桜"><img width="96" loading="lazy" src="/images/avatar.jpg" alt="桜"></a><div class="site-author-name"><a href="/about/">桜</a></div><span class="site-name">I believe we can fly up in the blue sky</span><sub class="site-subtitle"></sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="Home"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="Archives"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">3</span></a></div><div class="site-state-item"><a href="/categories/" title="Categories"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">0</span></a></div><div class="site-state-item"><a href="/tags/" title="Tags"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">0</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/jokerobk" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=275916722" title="网易云音乐" target="_blank" style="color:#C20C0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/129067632" title="哔哩哔哩" target="_blank" style="color:#FF8EB3"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-bilibili-line"></use></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" target="_blank" rel="noopener" href="https://www.youtube.com" title="油管" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-contrast-2-line"></use></svg></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F"><span class="toc-number">1.</span> <span class="toc-text">链式前向星</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88"><span class="toc-number">2.</span> <span class="toc-text">最近公共祖先</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%B4%E7%B4%A0%E5%86%99%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">朴素写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#deep%E5%86%99%E6%B3%95"><span class="toc-number">2.2.</span> <span class="toc-text">deep写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%80%8D%E5%A2%9E%E6%B3%95"><span class="toc-number">2.3.</span> <span class="toc-text">倍增法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%91%E4%B8%8A%E5%B7%AE%E5%88%86"><span class="toc-number">3.</span> <span class="toc-text">树上差分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%82%E8%B7%AF%E5%BE%84%E4%B8%8A%E7%9A%84%E7%82%B9%E7%9A%84%E6%9D%83%E5%80%BC"><span class="toc-number">3.1.</span> <span class="toc-text">求路径上的点的权值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%82%E8%B7%AF%E5%BE%84%E4%B8%8A%E7%9A%84%E8%BE%B9%E7%9A%84%E6%9D%83%E5%80%BC"><span class="toc-number">3.2.</span> <span class="toc-text">求路径上的边的权值</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tarjan%E7%AE%97%E6%B3%95%E6%B1%82%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F"><span class="toc-number">4.</span> <span class="toc-text">tarjan算法求强连通分量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%9B%BE%E7%9A%84%E4%B8%80%E4%BA%9B%E8%BF%9E%E9%80%9A%E6%80%A7%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">4.1.</span> <span class="toc-text">关于图的一些连通性的定义</span></a></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://jokerobk.github.io/2021/05/19/%E5%9B%BE%E8%AE%BA/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="桜"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="I believe we can fly up in the blue sky"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">图论</h1><div class="post-meta"><div class="post-time" style="display:inline-block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="Created: 2021-05-19 22:05:58" itemprop="dateCreated datePublished" datetime="2021-05-19T22:05:58+08:00">2021-05-19</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"></use></svg></span> <time title="Modified: 2021-05-20 23:23:59" itemprop="dateModified" datetime="2021-05-20T23:23:59+08:00">2021-05-20</time></div><div class="post-classify"></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;"><h1 id="链式前向星"><a href="#链式前向星" class="headerlink" title="链式前向星"></a>链式前向星</h1><pre><code class="bash">#include &lt;iostream&gt;
 #include &lt;algorithm&gt;
 #include &lt;cstdio&gt;
 using namespace std;
@@ -353,13 +355,13 @@ int main()
     return 0;
 &#125;
 </code></pre>
-<h2 id="求路径上的边的权值"><a href="#求路径上的边的权值" class="headerlink" title="求路径上的边的权值"></a>求路径上的边的权值</h2><h1 id="tarjan求强连通分量"><a href="#tarjan求强连通分量" class="headerlink" title="tarjan求强连通分量"></a>tarjan求强连通分量</h1><ul>
+<h2 id="求路径上的边的权值"><a href="#求路径上的边的权值" class="headerlink" title="求路径上的边的权值"></a>求路径上的边的权值</h2><h1 id="tarjan算法求强连通分量"><a href="#tarjan算法求强连通分量" class="headerlink" title="tarjan算法求强连通分量"></a>tarjan算法求强连通分量</h1><h2 id="关于图的一些连通性的定义"><a href="#关于图的一些连通性的定义" class="headerlink" title="关于图的一些连通性的定义"></a>关于图的一些连通性的定义</h2><ul>
 <li>连通<blockquote>
 <p>无向图中，从任意节点i可达到任意节点j</p>
 </blockquote>
 </li>
 <li>强连通<blockquote>
-<p>有向图中，从任意节点i可达到任意节点j</p>
+<p>有向图中，从任意节点i可达到任意节点j，每个结点可看作强连通</p>
 </blockquote>
 </li>
 <li>弱连通<blockquote>
@@ -369,6 +371,148 @@ int main()
 <li>强连通分量<blockquote>
 <p>有向图的极大强连通子图，称为强连通分量</p>
 </blockquote>
+</li>
+</ul>
+<hr>
+<p>dfn[N]:结点的编号。<br>p[N]:结点的时间戳，即结点能够通过回路返回到最小的结点时间戳，如果多个结点的时间戳相同时，<br>就表示这几个点构成了一个强连通。<br>如图：<br><img src="https://github.com/jokerobk/joker1234.github.io/blob/main/images/%E6%88%AA%E5%B1%8F2021-05-20%2022.47.26.png?raw=true" alt="p[N]示例图" loading="lazy"><br>其中(i,j)中的i表示结点的编号，j表示该点的时间戳，即p[j]，可以看到b、c、d构成了一个回路，a、f、g也构成了一个回路，b为c和d能够通过有向边回到的最小的结点，所以d的时间戳变为b的时间戳，c能够通过d回到b，所以c的时间戳也变为b的时间戳，a、f、g同理，然后再寻找构成的回路中所包含的最多结点的回路，这样就找到了强连通分量。</p>
+<ul>
+<li>问题<br>输入两个整数n和m，n代表图的结点数(从1到n)，接下来m行，每行两个整数u、v表示有向图的一条边又u-&gt;v,求图中能构成强连同分量的结点。</li>
+<li>输入样例<blockquote>
+<p>7 9<br>1 2<br>2 3<br>3 4<br>3 5<br>4 5<br>1 6<br>6 7<br>7 1<br>4 2</p>
+</blockquote>
+</li>
+<li>输出样例<blockquote>
+<p>1 6 7<br>2 3 4</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<ul>
+<li>参考代码<pre><code class="bash">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;stack&gt;
+#include &lt;vector&gt;
+using namespace std;
+const int N = 100010;
+vector&lt;int&gt; v[N];
+vector&lt;int&gt; ans[N];
+int maxx;
+stack&lt;int&gt; s;
+int n, m, a, b, dfn[N], p[N], cur = 1; //dfn当前结点的编号，p当前结点的时间戳
+                                     //如果多个结点时间戳相同，则这多个结点构成强连通
+typedef struct node
+&#123;
+  int nodeNum, nodeWay;
+&#125; Node;
+Node NodeM[N];
+int cmp(Node x, Node y)
+&#123;
+  return x.nodeNum &gt; y.nodeNum;
+&#125;
+bool search(int x)
+&#123;
+  int t = s.size();
+  int countS[N];
+  bool flag = false;
+  int i = t;
+  while (!s.empty())
+  &#123;
+      if (x == s.top())
+      &#123;
+          flag = true;
+      &#125;
+      countS[i--] = s.top();
+      s.pop();
+  &#125;
+  for (i = 1; i &lt;= t; i++)
+  &#123;
+      s.push(countS[i]);
+  &#125;
+  return flag;
+&#125;
+void dfs(int x)
+&#123;
+  dfn[x] = cur;
+  p[x] = cur++;
+  s.push(x);
+  for (int i = 0; i &lt; v[x].size(); i++)
+  &#123;
+      if (v[x][i]) //点x是否有出度
+      &#123;
+          if (dfn[v[x][i]] == 0) //点x所指向的点是否搜过，没搜过就dfs搜索
+          &#123;
+              dfs(v[x][i]);
+              p[x] = min(p[x], p[v[x][i]]);
+          &#125;
+          else if (search(v[x][i])) //如果搜过了，判断它是否还在栈中
+          &#123;
+              p[x] = min(p[x], p[v[x][i]]); //如果在栈中，就取时间戳最小的
+          &#125;
+      &#125;
+  &#125;
+  if (dfn[x] == p[x]) //如果结点标号等于时间戳，表明该点没有出度
+  &#123;
+      s.pop();
+  &#125;
+&#125;
+int main()
+&#123;
+  cin &gt;&gt; n &gt;&gt; m;
+  int temp = 0;
+  for (int i = 1; i &lt;= m; i++)
+  &#123;
+      cin &gt;&gt; a &gt;&gt; b;
+      v[a].push_back(b);
+  &#125;
+  for (int i = 1; i &lt;= n; i++)
+  &#123;
+      if (dfn[i] == 0) //如果该点的编号为0，表示该点还没有被搜过，就进行搜索
+      &#123;
+          dfs(i);
+      &#125;
+  &#125;
+  for (int i = 1; i &lt;= n; i++)
+  &#123;
+      ans[p[i]].push_back(i);
+  &#125;
+  for (int i = 1; i &lt;= n; i++)
+  &#123;
+      /*if (ans[i].size() &gt; maxx)
+      &#123;
+          maxx = ans[i].size();
+          temp = i;
+      &#125;*/
+      NodeM[i].nodeNum = ans[i].size();
+      NodeM[i].nodeWay = i;
+  &#125;
+  maxx = 0;
+  sort(NodeM + 1, NodeM + 1 + n, cmp);
+  /*for (int i = 1; i &lt;= n; i++)
+  &#123;
+      cout &lt;&lt; NodeM[i].nodeNum &lt;&lt; NodeM[i].nodeWay &lt;&lt; endl;
+  &#125;*/
+  for (int i = 1; i &lt;= n; i++)
+  &#123;
+      //cout &lt;&lt; maxx &lt;&lt; endl;
+      if (maxx &gt; NodeM[i].nodeNum)
+      &#123;
+          break;
+      &#125;
+      maxx = NodeM[i].nodeNum;
+      for (int j = 0; j &lt; maxx; j++)
+      &#123;
+          cout &lt;&lt; ans[NodeM[i].nodeWay][j] &lt;&lt; &quot; &quot;;
+      &#125;
+      cout &lt;&lt; endl;
+  &#125;
+  /*for (int i = 0; i &lt; maxx; i++)
+  &#123;
+      cout &lt;&lt; ans[temp][i] &lt;&lt; &quot; &quot;;
+  &#125;
+  cout &lt;&lt; endl;*/
+  return 0;
+&#125;
+</code></pre>
 </li>
 </ul>
 </div><ul class="post-copyright"><li class="post-copyright-author"><strong>Post author: </strong>桜</li><li class="post-copyright-link"><strong>Post link: </strong><a href="https://jokerobk.github.io/2021/05/19/%E5%9B%BE%E8%AE%BA/" title="图论">https://jokerobk.github.io/2021/05/19/%E5%9B%BE%E8%AE%BA/</a></li><li class="post-copyright-license"><strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> unless otherwise stated.</li></ul></section></article><div class="post-nav"><div class="post-nav-item"></div><div class="post-nav-item"><a class="post-nav-next" href="/2021/05/19/hard-string/" rel="next" title="hard string"><span class="post-nav-text">hard string</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div class="hty-card" id="comment"><div class="comment-tooltip text-center"><span>要不要和我说些什么？</span><br></div></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2021 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 桜</span></div><div class="powered"><span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v5.4.0</span><span class="footer-separator">|</span><span>Theme - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.6.1</span></div></footer><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a><div class="aplayer no-destroy" id="aplayer" data-id="308168565" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay data-theme="#0078E7" data-loop="all" data-order="list" data-preload="auto" data-volume="0.7" data-mutex data-lrctype="0" data-listfolded data-listmaxheight="340px" data-storagename="metingjs"></div></div></body></html>
