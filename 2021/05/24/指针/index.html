@@ -1,0 +1,204 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="桜"><meta name="copyright" content="桜"><meta name="generator" content="Hexo 5.4.0"><meta name="theme" content="hexo-theme-yun"><title>指针 | I believe we can fly up in the blue sky</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.1.24/dist/yun/yun-markdown.min.css"><script src="//at.alicdn.com/t/font_1140697_j5gk85dg4pf.js" async></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", () => {
+  [".post-card",".post-content img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+});
+</script><link class="aplayer-style-marker" rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script class="aplayer-script-marker" src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" defer></script><script class="meting-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js" defer></script><link rel="icon" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="alternate icon" href="/yun.ico"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><script id="yun-config">
+    const Yun = window.Yun || {};
+    window.CONFIG = {"hostname":"jokerobk.github.io","root":"/","title":"桜","version":"1.6.1","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms"},"anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
+  </script><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script src="/js/utils.js"></script><script src="/js/hexo-theme-yun.js"></script><meta name="description" content="指针指针所占用的内存空间大小  32位操作系统 一个指针占4个字节      64位操作系统 一个指针占8个字节      32位    64位  空指针和野指针 空指针 指针变量指向内存中编号为0的空间      空指针的用途 初始化指针变量      注意 空指针指向的内存是不可以访问的  #include&lt;iostream&gt; using namespace std; int ma">
+<meta property="og:type" content="article">
+<meta property="og:title" content="指针">
+<meta property="og:url" content="https://jokerobk.github.io/2021/05/24/%E6%8C%87%E9%92%88/index.html">
+<meta property="og:site_name" content="I believe we can fly up in the blue sky">
+<meta property="og:description" content="指针指针所占用的内存空间大小  32位操作系统 一个指针占4个字节      64位操作系统 一个指针占8个字节      32位    64位  空指针和野指针 空指针 指针变量指向内存中编号为0的空间      空指针的用途 初始化指针变量      注意 空指针指向的内存是不可以访问的  #include&lt;iostream&gt; using namespace std; int ma">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/jokerobk/joker1234.github.io/blob/main/images/32%E4%BD%8D%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84%E6%8C%87%E9%92%88%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4.png?raw=true">
+<meta property="og:image" content="https://github.com/jokerobk/joker1234.github.io/blob/main/images/64%E4%BD%8D%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84%E6%8C%87%E9%92%88%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4.png?raw=true">
+<meta property="article:published_time" content="2021-05-24T01:59:15.000Z">
+<meta property="article:modified_time" content="2021-05-24T06:14:16.373Z">
+<meta property="article:author" content="桜">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/jokerobk/joker1234.github.io/blob/main/images/32%E4%BD%8D%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84%E6%8C%87%E9%92%88%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4.png?raw=true"><script src="/js/ui/mode.js"></script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="Table of Contents"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="Overview"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info mickey-mouse"><a class="site-author-avatar" href="/about/" title="桜"><img width="96" loading="lazy" src="/images/avatar.jpg" alt="桜"></a><div class="site-author-name"><a href="/about/">桜</a></div><span class="site-name">I believe we can fly up in the blue sky</span><sub class="site-subtitle"></sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="Home"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="Archives"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">7</span></a></div><div class="site-state-item"><a href="/categories/" title="Categories"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">2</span></a></div><div class="site-state-item"><a href="/tags/" title="Tags"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">2</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/jokerobk" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=275916722" title="网易云音乐" target="_blank" style="color:#C20C0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/129067632" title="哔哩哔哩" target="_blank" style="color:#FF8EB3"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-bilibili-line"></use></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" target="_blank" rel="noopener" href="https://www.youtube.com" title="油管" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-contrast-2-line"></use></svg></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%87%E9%92%88"><span class="toc-number">1.</span> <span class="toc-text">指针</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E6%89%80%E5%8D%A0%E7%94%A8%E7%9A%84%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4%E5%A4%A7%E5%B0%8F"><span class="toc-number">1.1.</span> <span class="toc-text">指针所占用的内存空间大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E6%8C%87%E9%92%88%E5%92%8C%E9%87%8E%E6%8C%87%E9%92%88"><span class="toc-number">1.2.</span> <span class="toc-text">空指针和野指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#const%E4%BF%AE%E9%A5%B0%E6%8C%87%E9%92%88"><span class="toc-number">1.3.</span> <span class="toc-text">const修饰指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%92%8C%E6%95%B0%E7%BB%84"><span class="toc-number">1.4.</span> <span class="toc-text">指针和数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%92%8C%E5%87%BD%E6%95%B0"><span class="toc-number">1.5.</span> <span class="toc-text">指针和函数</span></a></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://jokerobk.github.io/2021/05/24/%E6%8C%87%E9%92%88/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="桜"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="I believe we can fly up in the blue sky"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">指针</h1><div class="post-meta"><div class="post-time" style="display:inline-block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="Created: 2021-05-24 09:59:15" itemprop="dateCreated datePublished" datetime="2021-05-24T09:59:15+08:00">2021-05-24</time></div><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/categories/cpp/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">cpp</span></a></span></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;"><h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><h2 id="指针所占用的内存空间大小"><a href="#指针所占用的内存空间大小" class="headerlink" title="指针所占用的内存空间大小"></a>指针所占用的内存空间大小</h2><hr>
+<ul>
+<li>32位操作系统<blockquote>
+<p>一个指针占4个字节</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<ul>
+<li>64位操作系统<blockquote>
+<p>一个指针占8个字节</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<ul>
+<li>32位<br><img src="https://github.com/jokerobk/joker1234.github.io/blob/main/images/32%E4%BD%8D%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84%E6%8C%87%E9%92%88%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4.png?raw=true" alt="32位" loading="lazy"></li>
+</ul>
+<hr>
+<ul>
+<li>64位<br><img src="https://github.com/jokerobk/joker1234.github.io/blob/main/images/64%E4%BD%8D%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84%E6%8C%87%E9%92%88%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4.png?raw=true" alt="64位" loading="lazy"></li>
+</ul>
+<h2 id="空指针和野指针"><a href="#空指针和野指针" class="headerlink" title="空指针和野指针"></a>空指针和野指针</h2><ul>
+<li>空指针<blockquote>
+<p>指针变量指向内存中编号为0的空间</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<ul>
+<li>空指针的用途<blockquote>
+<p>初始化指针变量</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<ul>
+<li>注意<blockquote>
+<p>空指针指向的内存是不可以访问的</p>
+</blockquote>
+<pre><code class="bash">#include&lt;iostream&gt;
+using namespace std;
+int main()&#123;
+  int *p = NULL;  //空指针
+  // *p = 1； 错误操作
+  return 0;
+&#125;
+</code></pre>
+</li>
+</ul>
+<hr>
+<ul>
+<li>野指针<blockquote>
+<p>指针变量指向非法的内存空间,在程序中要避免出现野指针</p>
+</blockquote>
+<pre><code class="bash">int *a = (int *)0x3f3f;     //野指针
+</code></pre>
+</li>
+</ul>
+<hr>
+<ul>
+<li>总结<blockquote>
+<p>空指针和野指针都不是我们申请的空间，因此不要访问</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="const修饰指针"><a href="#const修饰指针" class="headerlink" title="const修饰指针"></a>const修饰指针</h2><hr>
+<ul>
+<li>const修饰指针的三种情况<blockquote>
+<ol>
+<li>const修饰指针——常量指针</li>
+<li>Const修饰常量——指针常量</li>
+<li>const即修饰指针，又修饰常量</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<hr>
+<ul>
+<li>常量指针<pre><code class="bash">int a = 10;
+int b = 10;
+const int *p =&amp;a;
+</code></pre>
+<blockquote>
+<p>特点：指针的指向可以修改，但是指针指向的值不可以改。<br>*p = 20;(错误，指针指向的值不可以改)<br>p = &b;(正确，指针指向可以修改)</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<ul>
+<li>指针常量<pre><code class="bash">int a = 10;
+int b = 10;
+int * const p = &amp;a;
+</code></pre>
+<blockquote>
+<p>特点：指针的指向不可以修改，但是指针指向的值可以修改。<br>*p = 20；(正确，指针指向的值可以改)<br>p = &b;(错误，指针的指向不可以改)</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<ul>
+<li>即修饰指针，又修饰常量<pre><code class="bash">int a = 10;
+int b = 10;
+const int * const p = &amp;a;
+</code></pre>
+<blockquote>
+<p>特点：指针的指向既不可以修改，指针指向的值也不可修改。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="指针和数组"><a href="#指针和数组" class="headerlink" title="指针和数组"></a>指针和数组</h2><hr>
+<p>&amp;#160将指针指向数组和首地址，例如有一个整形数组a[10],数组a的首地址即为a，可将p=a;就表示指针p指向了数组a的首地址，可通过p++或p+1来访问数组a中后面的元素。当指针p指向数组a的首地址时，p中存放的为a[0]的地址，通过解引用使用p就可以访问a[0]中的元素，p++就是将指针p后移4个字节，使p指向a[1];而p+n(n为整数，可为正，也可为负)就表示p中存放的地址加上n*4个字节，例如p+1指a[1],p+2也就指向a[2]。</p>
+<ul>
+<li>code<pre><code class="bash">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+int main()
+&#123;
+  int a[10];
+  int *p = a;
+  for (int i = 0; i &lt; 10; i++)
+  &#123;
+      a[i] = i;
+      cout &lt;&lt; *(p + i) &lt;&lt; &quot; &quot;;
+  &#125;
+  cout &lt;&lt; endl;
+  memset(a, 0, sizeof(a));
+  for (int i = 0; i &lt; 10; i++)
+  &#123;
+      *p = i;
+      p++;
+      cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;;
+  &#125;
+  p--;
+  return 0;
+&#125;
+</code></pre>
+</li>
+</ul>
+<h2 id="指针和函数"><a href="#指针和函数" class="headerlink" title="指针和函数"></a>指针和函数</h2><hr>
+<ul>
+<li>函数值传递<pre><code class="bash">void swap1(int a, int b)&#123;
+  int temp = a;
+  a = b;
+  b = temp;
+&#125;
+int x = 10,y=20;
+swap1(x,y);
+</code></pre>
+<blockquote>
+<p>不会改变实参</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<ul>
+<li>地址传递<pre><code class="bash">void swap2(int *a, int *b)
+&#123;
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+&#125;
+Int x = 10, y = 20;
+swap2(&amp;x, &amp;y);
+</code></pre>
+<blockquote>
+<p>这种地址传递方式会改变实参x，y的值，但不会改变a和b的指向，指针a还是指向x，指针b还是指向y。</p>
+</blockquote>
+<pre><code class="bash">void swap3(int *a, int *b)
+&#123;
+  int *temp = a;
+  a = b;
+  b = temp;
+&#125;
+Int x = 10, y = 20;
+swap3(x, y);
+</code></pre>
+<blockquote>
+<p>这种地址传递方式不会改变实参x，y的值，但会改变指针a和b的指向，指针a指向y，指针b指向x。</p>
+</blockquote>
+</li>
+</ul>
+</div><ul class="post-copyright"><li class="post-copyright-author"><strong>Post author: </strong>桜</li><li class="post-copyright-link"><strong>Post link: </strong><a href="https://jokerobk.github.io/2021/05/24/%E6%8C%87%E9%92%88/" title="指针">https://jokerobk.github.io/2021/05/24/%E6%8C%87%E9%92%88/</a></li><li class="post-copyright-license"><strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> unless otherwise stated.</li></ul></section></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/2021/05/24/%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/" rel="prev" title="类和对象"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-left-s-line"></use></svg><span class="post-nav-text">类和对象</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/2021/05/23/%E5%8D%9A%E5%BC%88%E8%AE%BA/" rel="next" title="博弈论"><span class="post-nav-text">博弈论</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div class="hty-card" id="comment"><div class="comment-tooltip text-center"><span>要不要和我说些什么？</span><br></div></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2021 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 桜</span></div><div class="powered"><span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v5.4.0</span><span class="footer-separator">|</span><span>Theme - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.6.1</span></div></footer><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a><div class="aplayer no-destroy" id="aplayer" data-id="308168565" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay data-theme="#0078E7" data-loop="all" data-order="list" data-preload="auto" data-volume="0.7" data-mutex data-lrctype="0" data-listfolded data-listmaxheight="340px" data-storagename="metingjs"></div></div></body></html>
