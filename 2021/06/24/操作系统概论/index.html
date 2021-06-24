@@ -1,0 +1,201 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="桜"><meta name="copyright" content="桜"><meta name="generator" content="Hexo 5.4.0"><meta name="theme" content="hexo-theme-yun"><title>操作系统概论 | I believe we can fly up in the blue sky</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.1.24/dist/yun/yun-markdown.min.css"><script src="//at.alicdn.com/t/font_1140697_j5gk85dg4pf.js" async></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", () => {
+  [".post-card",".post-content img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+});
+</script><link class="aplayer-style-marker" rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script class="aplayer-script-marker" src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" defer></script><script class="meting-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js" defer></script><link rel="icon" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="alternate icon" href="/yun.ico"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><script id="yun-config">
+    const Yun = window.Yun || {};
+    window.CONFIG = {"hostname":"jokerobk.github.io","root":"/","title":"桜","version":"1.6.1","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms"},"anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
+  </script><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script src="/js/utils.js"></script><script src="/js/hexo-theme-yun.js"></script><meta name="description" content="操作系统概论 操作系统的特征   并发性、共享性、虚拟性、异步性 并发和共享互为存在条件，虚拟性的前提是并发性和共享性，并发性和共享性的结果是异步性。   操作系统的目标和功能   处理机管理、存储器管理、设备管理、文件管理 操作系统作为用户与计算机硬件的接口。   中断   当中断发生时，CPU立即进入和心态。 当中断发生后，当前运行的进程暂停运行，并由操作系统内核对中断进行处理。 对于不同的中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统概论">
+<meta property="og:url" content="https://jokerobk.github.io/2021/06/24/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/index.html">
+<meta property="og:site_name" content="I believe we can fly up in the blue sky">
+<meta property="og:description" content="操作系统概论 操作系统的特征   并发性、共享性、虚拟性、异步性 并发和共享互为存在条件，虚拟性的前提是并发性和共享性，并发性和共享性的结果是异步性。   操作系统的目标和功能   处理机管理、存储器管理、设备管理、文件管理 操作系统作为用户与计算机硬件的接口。   中断   当中断发生时，CPU立即进入和心态。 当中断发生后，当前运行的进程暂停运行，并由操作系统内核对中断进行处理。 对于不同的中">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-06-24T05:55:36.000Z">
+<meta property="article:modified_time" content="2021-06-24T08:09:35.082Z">
+<meta property="article:author" content="桜">
+<meta name="twitter:card" content="summary"><script src="/js/ui/mode.js"></script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="Table of Contents"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="Overview"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info mickey-mouse"><a class="site-author-avatar" href="/about/" title="桜"><img width="96" loading="lazy" src="/images/avatar.jpg" alt="桜"></a><div class="site-author-name"><a href="/about/">桜</a></div><span class="site-name">I believe we can fly up in the blue sky</span><sub class="site-subtitle"></sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="Home"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="Archives"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">24</span></a></div><div class="site-state-item"><a href="/categories/" title="Categories"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">8</span></a></div><div class="site-state-item"><a href="/tags/" title="Tags"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">3</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/jokerobk" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=275916722" title="网易云音乐" target="_blank" style="color:#C20C0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/129067632" title="哔哩哔哩" target="_blank" style="color:#FF8EB3"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-bilibili-line"></use></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" target="_blank" rel="noopener" href="https://www.youtube.com" title="油管" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-contrast-2-line"></use></svg></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">操作系统概论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2"><span class="toc-number">1.1.</span> <span class="toc-text">1.2</span></a></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://jokerobk.github.io/2021/06/24/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="桜"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="I believe we can fly up in the blue sky"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">操作系统概论</h1><div class="post-meta"><div class="post-time" style="display:inline-block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="Created: 2021-06-24 13:55:36" itemprop="dateCreated datePublished" datetime="2021-06-24T13:55:36+08:00">2021-06-24</time></div><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">操作系统</span></a></span></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;"><h1 id="操作系统概论"><a href="#操作系统概论" class="headerlink" title="操作系统概论"></a>操作系统概论</h1><ul>
+<li>操作系统的特征</li>
+</ul>
+<blockquote>
+<p>并发性、共享性、虚拟性、异步性</p>
+<p>并发和共享互为存在条件，虚拟性的前提是并发性和共享性，并发性和共享性的结果是异步性。</p>
+</blockquote>
+<ul>
+<li>操作系统的目标和功能</li>
+</ul>
+<blockquote>
+<p>处理机管理、存储器管理、设备管理、文件管理</p>
+<p>操作系统作为用户与计算机硬件的接口。</p>
+</blockquote>
+<ul>
+<li>中断</li>
+</ul>
+<blockquote>
+<p>当中断发生时，CPU立即进入和心态。</p>
+<p>当中断发生后，当前运行的进程暂停运行，并由操作系统内核对中断进行处理。</p>
+<p>对于不同的中断信号，会进行不同的处理。</p>
+<p>用户态到和心态通过中断实现，并且中断是唯一途径。</p>
+</blockquote>
+<ul>
+<li>系统调用</li>
+</ul>
+<blockquote>
+<p>系统调用会使处理器从用户态进入核心态。</p>
+</blockquote>
+<p>1.操作系统是一种（B）。<br>A.通用软件<br><u>B.系统软件</u><br>C.应用软件<br>D.软件包</p>
+<blockquote>
+<p>系统软件包括操作系统、数据库管理系统、语言处理程序、服务性程序、标准库程序等。</p>
+</blockquote>
+<p>2、操作系统是对（C）进行管理的软件。<br>A.软件<br>B.硬件<br>C.计算机资源<br>D.应用程序</p>
+<blockquote>
+<p>操作系统管理计算机的硬件和软件资源，这些资源统称为计算机资源。注意，操作系统不仅管理处理机、存储器等硬件资源，而且也管理文件，文件不属于硬件资源，但属于计算机资源。</p>
+</blockquote>
+<p>3、下面（D）资源不是操作系统应该管理的。<br>A.CPU<br>B.内存<br>C.外存<br>D.源程序</p>
+<blockquote>
+<p>源程序是一种计算机代码，是用程序设计语言编写的程序，经编译或解释后可形成具有一定功能的可执行文件，是直接面向程序员用户的，而不是操作系统的管理内容。本题采用排除法叮轻易得到答案，但有人会问操作系统不是也管理“文件”吗？源程序也存储在文件中吧？出现这种疑问的原因是，对操作系统管理文件的理解存在偏颇。操作系统管理文件，是指操作系统关心计算机中的文件的逻辑结构、物理结构、文件内部结构、多文件之间如何组织的问题，而不是关心文件的具体内容。这就好比你是操作系统，有|个水杯让你管理，你负责的是将这些水杯放在何处比较合适，而不关心水杯中的是水还是饮料。</p>
+</blockquote>
+<p>4、下列选项中，（D）不是操作系统关心的问题。<br>A.管理计算机裸机<br>B.设计、提供用户程序与硬件系统的界面<br>C.管理计算机系统资源<br>D.高级程序设计语言的编译器</p>
+<blockquote>
+<p>操作系统管理计算机软/硬件资源，扩充裸机以提供功能更强大的扩充机器，并充当用户与硬件交工的中介。高级程序设计语言的编译器显然不是操作系统关心的问题。编译器的实质是一段程序指令，它存储在计算机中，是上述水杯中的水。</p>
+</blockquote>
+<p>5.操作系统的基本功能是（D）。<br>A.提供功能强大的网络管理工具<br>B.提供用户界面方便用户使用<br>C.提供方便的可视化编辑程序<br>D.控制和管理系统内的各种资源</p>
+<blockquote>
+<p>操作系统是指控制和管理整个计算机系统的硬件和软件资源，合理地组织、调度计算机的工作和资源的分配，以便为用户和其他软件提供方便的接口与环境的程序集合。A、B、C都可理解成应用程序为用户提供的服务，是应用程序的功能，而不是操作系统的功能。</p>
+</blockquote>
+<p>6.现代操作系统中最基本的两个特征是（B）。<br>A.并发和不确定<br>B.并发和共享<br>C.共享和虚拟<br>D.虚拟和不确定</p>
+<blockquote>
+<p>操作系统最基本的特征是并发和共亨，两者互为存在条件。</p>
+</blockquote>
+<p>7、下列关于并发性的叙述中，正确的是（C）.<br>A.并发性是指若干事件在同一时刻发生<br>B.并发性是指若千事件在不同时刻发生<br>C.并发性是指若干事件在同一时间间隔内发生<br>D.并发性是指若干事件在不同时间间隔内发生</p>
+<blockquote>
+<p>并发性是指若干事件在同一时间间隔内发生，而并行性是指若干事件在同一时刻发生。</p>
+</blockquote>
+<p>8.【2009统考真题】单处理机系统中，可并行的是（D）。<br>I. 进程与进程 II. 处理机与设备 III. 处理机与通道.  IV. 设备与设备</p>
+<p>A.I、II、III<br>B.I、II、IV<br>C.I、III、IV<br>D.II、III、IV</p>
+<blockquote>
+<p>在单处理机系统（不包含多核的情况）中，同一时刻只能有一个进程占用处理机，因此进程之间不能并行执行。通道是独立于CPU的、控制输入/输出的设备，两者可以并行。显然，处理器与设备是可以并行的，难道CPU和显示屏不能并行工作？设备与设备是可以并行的，难道显示屏与打印机不能并行工作？</p>
+</blockquote>
+<p>9.用户可以通过（B）两种方式来使用计算机。<br>A.命令接口和函数<br>B.命令接口和系统调用<br>C.命令接口和文件管理<br>D.设备管理方式和系统调用</p>
+<blockquote>
+<p>操作系统主要向用户提供命令接口和程序接口（系统调用），此外还提供图形接|」当然，图形接口其实是调用了系统调用而实现的功能。</p>
+</blockquote>
+<p>10.系统调用是由操作系统提供给用户的，它（B）。<br>A.直接通过键盘交互方式使用<br>B.只能通过用户程序间接使用<br>C.是命令接口中的命令<br>D.与系统的命令一样</p>
+<blockquote>
+<p>系统调用是操作系统为应用程序使州内核功能所提供的接口。</p>
+</blockquote>
+<p>11.【2010统考真题】下列选项中，操作系统提供给应用程序的接口是（A）。<br>A.系统调用<br>B.中断<br>C.库函数<br>D.原语</p>
+<blockquote>
+<p>操作系统接口主要有命令接口和程序接口（也称系统调用）。库函数是高级语言中提供的与系统调用对应的函数（也有些库函数与系统调用无关），目的是隐藏“访管”指令的细节，使系统调用更为方便、抽象。但是，库兩数属十用户程序而非系统调用，是系统调用的上层。</p>
+</blockquote>
+<p>12.操作系统提供给编程人员的接口是（C）。<br>A.库函数<br>B.高级语言<br>C.系统调用<br>D.子程序</p>
+<blockquote>
+<p>操作系统为编程人员提供的接口是程序接口，即系统调用。</p>
+</blockquote>
+<p>13.系统调用的目的是（A）。<br>A.请求系统服务<br>B.中止系统服务<br>C.申请系统资源<br>D.释放系统资源</p>
+<blockquote>
+<p>操作系统不允许用户直接操作各种硬件资源，因此用户程序只能通过系统调用的方式来请求内核为其服务，间接地使用各种资源。</p>
+</blockquote>
+<p>14.为了方便用户直接或间接地控制自己的作业，操作系统向用户提供了命令接口，该接口又可进一步分为（A）。<br>A.联机用户接口和脱机用户接口<br>B.程序接口和图形接口<br>C.联机用户接口和程序接口<br>D.脱机用户接口和图形接口</p>
+<blockquote>
+<p>程序接口、图形接口与命令接口三者并没有从属关系。按命令控制方式的不同，命令接口分为联机用户接口和脱机用户接口。</p>
+</blockquote>
+<p>15.用户在程序中试图读某文件的第100个逻辑块，使用操作系统提供的（A）接口。</p>
+<p>A.系统调用<br>B.键盘命令<br>C.原语<br>D.图形用户接口</p>
+<blockquote>
+<p>操作系统通过系统调用向用户程序提供服务，文件I/O需要在内核态运行。</p>
+</blockquote>
+<p>16、操作系统与用户通信接口通常不包括（D）。<br>A. shell<br>B.命令解释器<br>C.广义指令<br>D.缓存管理指令</p>
+<blockquote>
+<p>广义指令就是系统调用命令，而命令解释器属于命令接lI，shell是命令解析器，它也属干命令接口。系统中的缓存全部由操作系统管理，对用户是透明的，操作系统不提供管理系统缓存的系统调用。</p>
+</blockquote>
+<p>17.下列选项中，不属于多道程序设计的基本特征是（C）。<br>A.制约性<br>B.间断性<br>C.顺序性<br>D.共享性</p>
+<blockquote>
+<p>引入多道程序设计后，程序的执行就失去了封闭性和顺序性。程序执行因为共享资源及相工协同的原因产生了竞争，相互制约。考悲到竞争的公平性，程序的执行是断续的。顺序性是单道程序设计的基本特征。</p>
+</blockquote>
+<p>18.以下关于操作系统的叙述中，错误的是（D）。<br>A.操作系统是管理资源的程序<br>B.操作系统是管理用户程序执行的程序<br>C.操作系统是能使系统资源提高效率的程序合<br>D.操作系统是用来编程的程序</p>
+<blockquote>
+<p>操作系统是用来管理资源的程序，用户程序也是在操作系统的管理下完成的。配置了操作系统的机器与裸机相比，资源利用凉大大提高。操作系统不能直接用来编程，D错误。</p>
+</blockquote>
+<p>19.【2013统考真题】计算机开机后，操作系统最终被加载到（D）。<br>A.BIOS<br>B.ROM<br>C.EPROM<br>D.RAM</p>
+<blockquote>
+<p>系统开机后，操作系统的程序会被自动加载到内存中的系统区，这段区域是RAM。部分未复习组成原理的读者可能对此题的答案并不熟悉，但熟悉了组成原理中的各类存储介质后，相信选对这道题并不难。</p>
+</blockquote>
+<p>说明库函数与系统调用的区别和联系</p>
+<blockquote>
+<p>库函数是语言或应用程序的一部分，可以运行在用户空间中。而系统调用是操作系统的一部分，是内核为用户提供的程序接口，运行在内核空间叶，而且许多库函数都会使用系统调用来实现功能。未使用系统调用的库函数，其执行效率通常要比系统调用的高。因为使用系统调用时，需要上下文的切换及状态的转换（由用户态转向核心态）。</p>
+</blockquote>
+<h2 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h2><p>1，提高单机资源利用率的关键技术是（D）。<br>A.脱机技术<br>B.虚拟技术<br>C.交换技术<br>D.多道程序设计技术</p>
+<blockquote>
+<p>脱机技术用于解决独占设各问题。虚拟技术与交换技术以多道程序设计技术为前提。多道程序设讣技术由于同时在主存中运行多个程序，在一个程序等待时，可以去执行其他程序，因此提高了系统资源的利用率。</p>
+</blockquote>
+<p>2、批处理系统的主要缺点是（D）。<br>A.系统吞吐量小<br>B.CPU利用率不高<br>C.资源利用率低<br>D.无交互能力</p>
+<blockquote>
+<p>批处理系统中，作业执行时用户无法干预其运行，只能通过事先编制作业控制说明书来间接千预，缺少交互能力，也囚此才有了分时系统的出现。</p>
+</blockquote>
+<p>3.下列选项中，不属于多道程序设计的基本特征的是（C）.<br>A.制约性<br>B.间断性<br>C.顺序性<br>D.共享性</p>
+<blockquote>
+<p>多道程序的运行环境比单道程序的运行环境更加复杂。引入多道程序后，程序的执行就失去了封闭性和顺序性。程序执行因为共享资源及相互协同的原因产生了竞争，相互制约。<br>考虑到竞争的公平性，程序的执行是断续的。</p>
+</blockquote>
+<p>4、操作系统的基本类型主要有（B）。<br>A、批处理操作系统、分时操作系统和多任务系统<br>B、批处理操作系统、分时操作系统和实时操作系统<br>C.单用户系统、多用户系统和批处理操作系统<br>D.实时操作系统、分时操作系统和多用户系统</p>
+<blockquote>
+<p>操作系统的基本类型主要有批处理系统、分时系统和实时系统。</p>
+</blockquote>
+<p>5.【2016统考真题】下列关于批处理系统的叙述中，正确的是（A）。 </p>
+<p>I.批处理系统允许多个用户与计算机直接交互<br>II.批处理系统分为单道批处理系统和多道批处理系统<br>III.中断技术使得多道批处理系统和I/O设备可与CPU并行工作</p>
+<p>A.仅II、III<br>B.仅II</p>
+<p>C. 仅I、II</p>
+<p>D. 仅I、III</p>
+<blockquote>
+<p>批处理系统中，作业执行时用户无法千预其运行，只能通过事先编制作业控制说明书来间接干预，缺少交互能力，也因此才发展出分时系统，I错误。批处理系统按发展历程又分为单道批处理系统、多道批处理系统，II正确。多道程序设计技术允许同时把多个程序放入内存，并允许它们交替在CPU中运行，它们共享系统巾的各种硬/软件资源，当一道程序因I/O请求而暂停运行时，CPU使立即转去运行另一道程序，即多道批处理系统的I/O设备可与CPU并行工作，这都是借助于中断技术实现的，III正确。</p>
+</blockquote>
+<p>6.【2017统考真题】与单道程序系统相比，多道程序系统的优点是（D）。<br>I.CPU利用率高<br>II.系统开销小<br>III系统吞吐量大<br>IV.I/O设备利用率高<br>A.仅I、III<br>B.仅I、IV<br>C.仅II、III<br>D.仅I、III、IV</p>
+<blockquote>
+<p>多道程序系统通过组织作业（编码或数据）使CPU总有一个作业可执行，从而提高了CPU的利用率、系统吞吐量和I/O设备利用率，I、III、IV是优点。但系统要付出额外的开销来组织作业和切换作业，II错误。所以选D。</p>
+</blockquote>
+<p>7.实时操作系统必须在（B）内处理来自外部的事件。<br>A.一个机器周期<br>B.被控制对象规定时间<br>C.周转时间<br>D.时间片</p>
+<blockquote>
+<p>实时系统要求能实时处理外部事件，即在规定的时间内完成对外部事件的处理。</p>
+</blockquote>
+<p>8.实时系统的进程调度，通常采用（C）算法。<br>A.先来先服务<br>B.时间片轮转<br>C.抢占式的优先级高者优先<br>D.高响应比优先</p>
+<blockquote>
+<p>实时系统必须能足够及时地处理某些紧急的外部事件，因此普遍用高优先级，并用“可抢占”来确保实时处理。</p>
+</blockquote>
+<p>9.（B）不是设计实时操作系统的主要追求目标<br>A.安全可靠<br>B.资源利用率<br>C.及时响应<br>D，快速处理</p>
+<blockquote>
+<p>实时性和叮靠性是实时操作系统最重要的两个目标，而安全可靠体现了可靠性，快速处理和及时响应体现了实时性。资源利用率不是实时操作系统的主要目标，即为了保证快速处理高优先级任务，允许“浪费”一些系统资源。</p>
+</blockquote>
+<p>10、下列（D）应用工作最好采用实时操作系统平台。<br>I.航空订票<br>lI.办公自动化<br>III.机床控制<br>IV. AutoCAD<br>V.工资管理系统<br>VI.股票交易系统<br>A.I、II和III<br>B.I、IIIl和IV<br>C.I、V和IV<br>D.I、IIl和VI<br>11、分时系统的一个重要性能是系统的响应时间，对操作系统的（C）因素进行改进有利于改善系统的响应时间。<br>A.加大时间片<br>B.采用静态页式管理<br>C.优先级十非抢占式调度算法<br>D.代码可重入</p>
+<blockquote>
+<p>采用优先级+非抢占式调度算法，既可让重要的作业/进程通过高优先级尽快获得系统响应，又叮保证次要的作用/进程在非抢占式调度下不会迟迟得不到系统响应，这样兼顾的设计有利于改善系统的响应时间。加大时间片会延达系统响应时间静态页式管理和代码可重入与系统响应时间无关。</p>
+</blockquote>
+<p>12、分时系统追求的目标是（B），<br>A.充分利用I/O设备<br>B.比较快速响应用户<br>C.提高系统吞吐率<br>D、充分利用内存</p>
+<blockquote>
+<p>要求快速响应用户是导致分时系统出现的重要原因。</p>
+</blockquote>
+<p>13.在分时系统中，时间片一定时，（C）响应时间越长。<br>A.内存越多<br>B.内存越少<br>C.用户数越多<br>D.用户数越少</p>
+<blockquote>
+<p>分时系统中，当时问片固定时，用户数越多，每个用户分到的时间片就越少，响应时间自然就变长，选C。注意，分时系统的响应时间T的比例关系可表达为TQN，其中Q是时间片，而N是用户数。</p>
+</blockquote>
+<p>14.在分时系统中，为使多个进程能够及时与系统交互，最关键的问题是能在短时间内，使所有就绪进程都能运行。当就绪进程数为100时，为保证响应时间不超过2s，此时的时间片最大应为（B）。<br>A.10ms<br>B.20ms<br>C.50ms<br>D.100ms</p>
+<blockquote>
+<p>响应时间不超过2s，即在2s内必须响应所有进程。所以时间片最大为2s/100=20ms。</p>
+</blockquote>
+<p>15.操作系统有多种类型。允许多个用户以交互的方式使用计算机的操作系统，称为（B）；允许多个用户将若干作业提交给计算机系统集中处理的操作系统，称为（A）；在（C）的控制下，计算机系统能及时处理由过程控制反馈的数据，并及时做出响应；在IBM-PC中，操作系统称为（D），<br>A，批处理系统，<br>B、分时操作系统，</p>
+<p>C.实时操作系统<br>D.微型计算机操作系统<br>16.【2018统考真题】下列关于多任务操作系统的叙述中，正确的是（C）。</p>
+<p> I.具有并发和并行的特点<br>II.需要实现对共享资源的保护<br>III.需要运行在多CPU的硬件平台上<br>A.仅I<br>B.仅II<br>C.仅I、II<br>D.I、II、III</p>
+<blockquote>
+<p>多任务操作系统可在同一时间内运行多个应用程序，因此I正确。多个任务必须工斥地访问共享资源，为达到这一目标必须对共享资源进行必要的保护，因此II正确。现代操作系统都是多任务的（主要特点是并发和并行），并不一定需要运行在多CPU的硬件上，单个CPU也可满足要求，III错误。综上所述，I、II正确，11错误，囚此选C。</p>
+</blockquote>
+<p>二、综合应用题<br>1.批处理操作系统、分时操作系统和实时操作系统各有什么特点？</p>
+<blockquote>
+<p>1）批处理操作系统的用户脱机使用计算机，作业是成批处理的，系统内多道程序并发执行交互能力差。<br>2）分时操作系统可让多个用户同时使用计算机，人机交互性较强，具有每个用户独立使用计算机的独占性，系统响应及时。<br>3）实时操作系统能对控制对象做出及时反应，可靠性高，响应及时，但资源利用率低。</p>
+</blockquote>
+<p>2.有两个程序，程序A依次使用CPU计10s、设备甲计5s、CPU计5s、设备乙计10s、CPU计10s；程序B依次使用设备甲计10s、CPU计10s、设备乙计Ss、CPU计5s、设备乙计10s。在单道程序环境下先执行程序A再执行程序B，CPU的利用率是多少？在多道程序环境下，CPU利用率是多少？</p>
+<p>3.设某计算机系统有一个CPU、一台输入设备、一台打印机。现有两个进程同时进入就绪<br>态，且进程A先得到CPU运行，进程B后运行。进程A的运行轨迹为；计算50ms，打印信息100ms，再计算50ms，打印信息100ms，结束。进程B的运行轨迹为：计算50ms，输入数据80ms，再计算100ms，结束。画出它们的时序关系图（可用甘特图），并说明：</p>
+<p>1）开始运行后，CPU有无空闲等待？若有，在哪段时间内等待？计算CPU的利用率。 </p>
+<p>2）进程A运行时有无等待现象？若有，在何时发生等待现象？</p>
+<p>3）进程B运行时有无等待现象？若有，在何时发生等待现象？</p>
+</div><ul class="post-copyright"><li class="post-copyright-author"><strong>Post author: </strong>桜</li><li class="post-copyright-link"><strong>Post link: </strong><a href="https://jokerobk.github.io/2021/06/24/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" title="操作系统概论">https://jokerobk.github.io/2021/06/24/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/</a></li><li class="post-copyright-license"><strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> unless otherwise stated.</li></ul></section></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/2021/06/24/%E8%BF%9B%E7%A8%8B/" rel="prev" title="进程"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-left-s-line"></use></svg><span class="post-nav-text">进程</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/2021/06/23/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="next" title="操作系统"><span class="post-nav-text">操作系统</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div class="hty-card" id="comment"><div class="comment-tooltip text-center"><span>要不要和我说些什么？</span><br></div></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2021 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 桜</span></div><div class="powered"><span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v5.4.0</span><span class="footer-separator">|</span><span>Theme - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.6.1</span></div></footer><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a><div class="aplayer no-destroy" id="aplayer" data-id="308168565" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay data-theme="#0078E7" data-loop="all" data-order="list" data-preload="auto" data-volume="0.7" data-mutex data-lrctype="0" data-listfolded data-listmaxheight="340px" data-storagename="metingjs"></div></div></body></html>
