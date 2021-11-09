@@ -1,0 +1,155 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="桜"><meta name="copyright" content="桜"><meta name="generator" content="Hexo 5.4.0"><meta name="theme" content="hexo-theme-yun"><title>复杂查询 | I believe we can fly up in the blue sky</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.1.24/dist/yun/yun-markdown.min.css"><script src="//at.alicdn.com/t/font_1140697_j5gk85dg4pf.js" async></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", () => {
+  [".post-card",".post-content img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+});
+</script><link class="aplayer-style-marker" rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script class="aplayer-script-marker" src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" defer></script><script class="meting-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js" defer></script><link rel="icon" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="alternate icon" href="/yun.ico"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><script id="yun-config">
+    const Yun = window.Yun || {};
+    window.CONFIG = {"hostname":"jokerobk.github.io","root":"/","title":"桜","version":"1.6.1","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms"},"anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
+  </script><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script src="/js/utils.js"></script><script src="/js/hexo-theme-yun.js"></script><meta name="description" content="MySQL相关的复杂查询导入表TABLE class -- ----------------------------  22     --  Table structure for &#96;class&#96;  23     -- ----------------------------  24     DROP TABLE IF EXISTS &#96;class&#96;;  25     CREATE TABLE &#96;c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="复杂查询">
+<meta property="og:url" content="https://jokerobk.github.io/2021/11/07/%E5%A4%8D%E6%9D%82%E6%9F%A5%E8%AF%A2/index.html">
+<meta property="og:site_name" content="I believe we can fly up in the blue sky">
+<meta property="og:description" content="MySQL相关的复杂查询导入表TABLE class -- ----------------------------  22     --  Table structure for &#96;class&#96;  23     -- ----------------------------  24     DROP TABLE IF EXISTS &#96;class&#96;;  25     CREATE TABLE &#96;c">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-11-07T14:34:33.000Z">
+<meta property="article:modified_time" content="2021-11-09T13:58:01.698Z">
+<meta property="article:author" content="桜">
+<meta name="twitter:card" content="summary"><script src="/js/ui/mode.js"></script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="Table of Contents"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="Overview"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info mickey-mouse"><a class="site-author-avatar" href="/about/" title="桜"><img width="96" loading="lazy" src="/images/avatar.jpg" alt="桜"></a><div class="site-author-name"><a href="/about/">桜</a></div><span class="site-name">I believe we can fly up in the blue sky</span><sub class="site-subtitle"></sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="Home"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="Archives"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">31</span></a></div><div class="site-state-item"><a href="/categories/" title="Categories"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">10</span></a></div><div class="site-state-item"><a href="/tags/" title="Tags"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">3</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/jokerobk" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=275916722" title="网易云音乐" target="_blank" style="color:#C20C0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/129067632" title="哔哩哔哩" target="_blank" style="color:#FF8EB3"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-bilibili-line"></use></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" target="_blank" rel="noopener" href="https://www.youtube.com" title="油管" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-contrast-2-line"></use></svg></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL%E7%9B%B8%E5%85%B3%E7%9A%84%E5%A4%8D%E6%9D%82%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.</span> <span class="toc-text">MySQL相关的复杂查询</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E8%A1%A8"><span class="toc-number">1.1.</span> <span class="toc-text">导入表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TABLE-class"><span class="toc-number">1.1.1.</span> <span class="toc-text">TABLE class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TABLE-course"><span class="toc-number">1.1.2.</span> <span class="toc-text">TABLE course</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TABLE-score"><span class="toc-number">1.1.3.</span> <span class="toc-text">TABLE score</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TABLE-student"><span class="toc-number">1.1.4.</span> <span class="toc-text">TABLE student</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TABLE-teacher"><span class="toc-number">1.1.5.</span> <span class="toc-text">TABLE teacher</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text">问题</span></a></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://jokerobk.github.io/2021/11/07/%E5%A4%8D%E6%9D%82%E6%9F%A5%E8%AF%A2/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="桜"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="I believe we can fly up in the blue sky"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">复杂查询</h1><div class="post-meta"><div class="post-time" style="display:inline-block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="Created: 2021-11-07 22:34:33" itemprop="dateCreated datePublished" datetime="2021-11-07T22:34:33+08:00">2021-11-07</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"></use></svg></span> <time title="Modified: 2021-11-09 21:58:01" itemprop="dateModified" datetime="2021-11-09T21:58:01+08:00">2021-11-09</time></div><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/categories/MySQL/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">MySQL</span></a></span> > <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/categories/MySQL/%E6%9F%A5%E8%AF%A2/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">查询</span></a></span></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;"><h1 id="MySQL相关的复杂查询"><a href="#MySQL相关的复杂查询" class="headerlink" title="MySQL相关的复杂查询"></a>MySQL相关的复杂查询</h1><h2 id="导入表"><a href="#导入表" class="headerlink" title="导入表"></a>导入表</h2><h3 id="TABLE-class"><a href="#TABLE-class" class="headerlink" title="TABLE class"></a>TABLE class</h3><blockquote>
+<pre><code class="mysql">-- ----------------------------
+ 22     --  Table structure for `class`
+ 23     -- ----------------------------
+ 24     DROP TABLE IF EXISTS `class`;
+ 25     CREATE TABLE `class` (
+ 26       `cid` int(11) NOT NULL AUTO_INCREMENT,
+ 27       `caption` varchar(32) NOT NULL,
+ 28       PRIMARY KEY (`cid`)
+ 29     ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+ 30 
+ 31     -- ----------------------------
+ 32     --  Records of `class`
+ 33     -- ----------------------------
+ 34     BEGIN;
+ 35     INSERT INTO `class` VALUES (&#39;1&#39;, &#39;三年二班&#39;), (&#39;2&#39;, &#39;三年三班&#39;), (&#39;3&#39;, &#39;一年二班&#39;), (&#39;4&#39;, &#39;二年九班&#39;);
+ 36     COMMIT;
+</code></pre>
+</blockquote>
+<h3 id="TABLE-course"><a href="#TABLE-course" class="headerlink" title="TABLE course"></a>TABLE course</h3><blockquote>
+<pre><code class="mysql">-- ----------------------------
+ 39     --  Table structure for `course`
+ 40     -- ----------------------------
+ 41     DROP TABLE IF EXISTS `course`;
+ 42     CREATE TABLE `course` (
+ 43       `cid` int(11) NOT NULL AUTO_INCREMENT,
+ 44       `cname` varchar(32) NOT NULL,
+ 45       `teacher_id` int(11) NOT NULL,
+ 46       PRIMARY KEY (`cid`),
+ 47       KEY `fk_course_teacher` (`teacher_id`),
+ 48       CONSTRAINT `fk_course_teacher` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`tid`)
+ 49     ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+ 50 
+ 51     -- ----------------------------
+ 52     --  Records of `course`
+ 53     -- ----------------------------
+ 54     BEGIN;
+ 55     INSERT INTO `course` VALUES (&#39;1&#39;, &#39;生物&#39;, &#39;1&#39;), (&#39;2&#39;, &#39;物理&#39;, &#39;2&#39;), (&#39;3&#39;, &#39;体育&#39;, &#39;3&#39;), (&#39;4&#39;, &#39;美术&#39;, &#39;2&#39;);
+ 56     COMMIT;
+</code></pre>
+</blockquote>
+<h3 id="TABLE-score"><a href="#TABLE-score" class="headerlink" title="TABLE score"></a>TABLE score</h3><blockquote>
+<pre><code class="mysql">-- ----------------------------
+ 59     --  Table structure for `score`
+ 60     -- ----------------------------
+ 61     DROP TABLE IF EXISTS `score`;
+ 62     CREATE TABLE `score` (
+ 63       `sid` int(11) NOT NULL AUTO_INCREMENT,
+ 64       `student_id` int(11) NOT NULL,
+ 65       `course_id` int(11) NOT NULL,
+ 66       `num` int(11) NOT NULL,
+ 67       PRIMARY KEY (`sid`),
+ 68       KEY `fk_score_student` (`student_id`),
+ 69       KEY `fk_score_course` (`course_id`),
+ 70       CONSTRAINT `fk_score_course` FOREIGN KEY (`course_id`) REFERENCES `course` (`cid`),
+ 71       CONSTRAINT `fk_score_student` FOREIGN KEY (`student_id`) REFERENCES `student` (`sid`)
+ 72     ) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
+ 73 
+ 74     -- ----------------------------
+ 75     --  Records of `score`
+ 76     -- ----------------------------
+ 77     BEGIN;
+ 78     INSERT INTO `score` VALUES (&#39;1&#39;, &#39;1&#39;, &#39;1&#39;, &#39;10&#39;), (&#39;2&#39;, &#39;1&#39;, &#39;2&#39;, &#39;9&#39;), (&#39;5&#39;, &#39;1&#39;, &#39;4&#39;, &#39;66&#39;), (&#39;6&#39;, &#39;2&#39;, &#39;1&#39;, &#39;8&#39;), (&#39;8&#39;, &#39;2&#39;, &#39;3&#39;, &#39;68&#39;), (&#39;9&#39;, &#39;2&#39;, &#39;4&#39;, &#39;99&#39;), (&#39;10&#39;, &#39;3&#39;, &#39;1&#39;, &#39;77&#39;), (&#39;11&#39;, &#39;3&#39;, &#39;2&#39;, &#39;66&#39;), (&#39;12&#39;, &#39;3&#39;, &#39;3&#39;, &#39;87&#39;), (&#39;13&#39;, &#39;3&#39;, &#39;4&#39;, &#39;99&#39;), (&#39;14&#39;, &#39;4&#39;, &#39;1&#39;, &#39;79&#39;), (&#39;15&#39;, &#39;4&#39;, &#39;2&#39;, &#39;11&#39;), (&#39;16&#39;, &#39;4&#39;, &#39;3&#39;, &#39;67&#39;), (&#39;17&#39;, &#39;4&#39;, &#39;4&#39;, &#39;100&#39;), (&#39;18&#39;, &#39;5&#39;, &#39;1&#39;, &#39;79&#39;), (&#39;19&#39;, &#39;5&#39;, &#39;2&#39;, &#39;11&#39;), (&#39;20&#39;, &#39;5&#39;, &#39;3&#39;, &#39;67&#39;), (&#39;21&#39;, &#39;5&#39;, &#39;4&#39;, &#39;100&#39;), (&#39;22&#39;, &#39;6&#39;, &#39;1&#39;, &#39;9&#39;), (&#39;23&#39;, &#39;6&#39;, &#39;2&#39;, &#39;100&#39;), (&#39;24&#39;, &#39;6&#39;, &#39;3&#39;, &#39;67&#39;), (&#39;25&#39;, &#39;6&#39;, &#39;4&#39;, &#39;100&#39;), (&#39;26&#39;, &#39;7&#39;, &#39;1&#39;, &#39;9&#39;), (&#39;27&#39;, &#39;7&#39;, &#39;2&#39;, &#39;100&#39;), (&#39;28&#39;, &#39;7&#39;, &#39;3&#39;, &#39;67&#39;), (&#39;29&#39;, &#39;7&#39;, &#39;4&#39;, &#39;88&#39;), (&#39;30&#39;, &#39;8&#39;, &#39;1&#39;, &#39;9&#39;), (&#39;31&#39;, &#39;8&#39;, &#39;2&#39;, &#39;100&#39;), (&#39;32&#39;, &#39;8&#39;, &#39;3&#39;, &#39;67&#39;), (&#39;33&#39;, &#39;8&#39;, &#39;4&#39;, &#39;88&#39;), (&#39;34&#39;, &#39;9&#39;, &#39;1&#39;, &#39;91&#39;), (&#39;35&#39;, &#39;9&#39;, &#39;2&#39;, &#39;88&#39;), (&#39;36&#39;, &#39;9&#39;, &#39;3&#39;, &#39;67&#39;), (&#39;37&#39;, &#39;9&#39;, &#39;4&#39;, &#39;22&#39;), (&#39;38&#39;, &#39;10&#39;, &#39;1&#39;, &#39;90&#39;), (&#39;39&#39;, &#39;10&#39;, &#39;2&#39;, &#39;77&#39;), (&#39;40&#39;, &#39;10&#39;, &#39;3&#39;, &#39;43&#39;), (&#39;41&#39;, &#39;10&#39;, &#39;4&#39;, &#39;87&#39;), (&#39;42&#39;, &#39;11&#39;, &#39;1&#39;, &#39;90&#39;), (&#39;43&#39;, &#39;11&#39;, &#39;2&#39;, &#39;77&#39;), (&#39;44&#39;, &#39;11&#39;, &#39;3&#39;, &#39;43&#39;), (&#39;45&#39;, &#39;11&#39;, &#39;4&#39;, &#39;87&#39;), (&#39;46&#39;, &#39;12&#39;, &#39;1&#39;, &#39;90&#39;), (&#39;47&#39;, &#39;12&#39;, &#39;2&#39;, &#39;77&#39;), (&#39;48&#39;, &#39;12&#39;, &#39;3&#39;, &#39;43&#39;), (&#39;49&#39;, &#39;12&#39;, &#39;4&#39;, &#39;87&#39;), (&#39;52&#39;, &#39;13&#39;, &#39;3&#39;, &#39;87&#39;);
+ 79     COMMIT;
+</code></pre>
+</blockquote>
+<h3 id="TABLE-student"><a href="#TABLE-student" class="headerlink" title="TABLE student"></a>TABLE student</h3><blockquote>
+<pre><code class="mysql">-- ----------------------------
+ 82     --  Table structure for `student`
+ 83     -- ----------------------------
+ 84     DROP TABLE IF EXISTS `student`;
+ 85     CREATE TABLE `student` (
+ 86       `sid` int(11) NOT NULL AUTO_INCREMENT,
+ 87       `gender` char(1) NOT NULL,
+ 88       `class_id` int(11) NOT NULL,
+ 89       `sname` varchar(32) NOT NULL,
+ 90       PRIMARY KEY (`sid`),
+ 91       KEY `fk_class` (`class_id`),
+ 92       CONSTRAINT `fk_class` FOREIGN KEY (`class_id`) REFERENCES `class` (`cid`)
+ 93     ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+ 94 
+ 95     -- ----------------------------
+ 96     --  Records of `student`
+ 97     -- ----------------------------
+ 98     BEGIN;
+ 99     INSERT INTO `student` VALUES (&#39;1&#39;, &#39;男&#39;, &#39;1&#39;, &#39;理解&#39;), (&#39;2&#39;, &#39;女&#39;, &#39;1&#39;, &#39;钢蛋&#39;), (&#39;3&#39;, &#39;男&#39;, &#39;1&#39;, &#39;张三&#39;), (&#39;4&#39;, &#39;男&#39;, &#39;1&#39;, &#39;张一&#39;), (&#39;5&#39;, &#39;女&#39;, &#39;1&#39;, &#39;张二&#39;), (&#39;6&#39;, &#39;男&#39;, &#39;1&#39;, &#39;张四&#39;), (&#39;7&#39;, &#39;女&#39;, &#39;2&#39;, &#39;铁锤&#39;), (&#39;8&#39;, &#39;男&#39;, &#39;2&#39;, &#39;李三&#39;), (&#39;9&#39;, &#39;男&#39;, &#39;2&#39;, &#39;李一&#39;), (&#39;10&#39;, &#39;女&#39;, &#39;2&#39;, &#39;李二&#39;), (&#39;11&#39;, &#39;男&#39;, &#39;2&#39;, &#39;李四&#39;), (&#39;12&#39;, &#39;女&#39;, &#39;3&#39;, &#39;如花&#39;), (&#39;13&#39;, &#39;男&#39;, &#39;3&#39;, &#39;刘三&#39;), (&#39;14&#39;, &#39;男&#39;, &#39;3&#39;, &#39;刘一&#39;), (&#39;15&#39;, &#39;女&#39;, &#39;3&#39;, &#39;刘二&#39;), (&#39;16&#39;, &#39;男&#39;, &#39;3&#39;, &#39;刘四&#39;);
+100     COMMIT;
+</code></pre>
+</blockquote>
+<h3 id="TABLE-teacher"><a href="#TABLE-teacher" class="headerlink" title="TABLE teacher"></a>TABLE teacher</h3><blockquote>
+<pre><code class="mysql">-- ----------------------------
+103     --  Table structure for `teacher`
+104     -- ----------------------------
+105     DROP TABLE IF EXISTS `teacher`;
+106     CREATE TABLE `teacher` (
+107       `tid` int(11) NOT NULL AUTO_INCREMENT,
+108       `tname` varchar(32) NOT NULL,
+109       PRIMARY KEY (`tid`)
+110     ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+111 
+112     -- ----------------------------
+113     --  Records of `teacher`
+114     -- ----------------------------
+115     BEGIN;
+116     INSERT INTO `teacher` VALUES (&#39;1&#39;, &#39;张磊老师&#39;), (&#39;2&#39;, &#39;李平老师&#39;), (&#39;3&#39;, &#39;刘海燕老师&#39;), (&#39;4&#39;, &#39;朱云海老师&#39;), (&#39;5&#39;, &#39;李杰老师&#39;);
+117     COMMIT;
+118 
+119     SET FOREIGN_KEY_CHECKS = 1;
+</code></pre>
+</blockquote>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ol>
+<li>查询所有的课程的名称以及对应的任课老师姓名。</li>
+<li>查询学生表中男女生各有多少人。</li>
+<li>查询物理成绩等于100的学生姓名。</li>
+<li>查询平均成绩大于八十分的同学的姓名和平均成绩</li>
+<li>查询所有学生的学号、姓名、选课数、总成绩</li>
+<li>查询姓李老师的个数</li>
+<li>查询没有报李平老师课的学生姓名</li>
+<li>查询物理课程比生物课程高的学生的学号</li>
+<li>查询没有同时选修物理课程和体育课程的学生姓名</li>
+<li>查询挂科超过两门(包括两门)的学生姓名和班级</li>
+<li>查询选修了所有课程的学生姓名</li>
+<li>查询李平老师教的课程的所有成绩记录</li>
+<li>查询全部学生都选修了的课程号和课程名</li>
+<li>查询每门课程被选修的次数</li>
+<li>查询只选修了一门课程的学生姓名和学号</li>
+<li>查询所有学生考出的成绩并按从高到低排序(成绩去重)</li>
+<li>查询平均成绩大于85的学生姓名和平均成绩</li>
+<li>查询生物成绩不及格的学生姓名和对应生物分数</li>
+<li>查询在所有选修了李平老师课程的学生中，这些课程(李平老师的课程，不是所有课程)平均成绩最高的学生姓名</li>
+<li>查询每门成绩最好的前两名学生姓名</li>
+<li>查询不同课程但成绩相同的学号、课程号、成绩</li>
+<li>查询没学过“李平”老师课程的学生姓名以及选修的课程名称</li>
+<li>查询所有选修了学号学号为1的同学选修过的一门或者多门课程的同学学号和姓名</li>
+<li>任课最多的老师中学生单科成绩最高的学生姓名</li>
+</ol>
+</div><ul class="post-copyright"><li class="post-copyright-author"><strong>Post author: </strong>桜</li><li class="post-copyright-link"><strong>Post link: </strong><a href="https://jokerobk.github.io/2021/11/07/%E5%A4%8D%E6%9D%82%E6%9F%A5%E8%AF%A2/" title="复杂查询">https://jokerobk.github.io/2021/11/07/%E5%A4%8D%E6%9D%82%E6%9F%A5%E8%AF%A2/</a></li><li class="post-copyright-license"><strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> unless otherwise stated.</li></ul></section></article><div class="post-nav"><div class="post-nav-item"></div><div class="post-nav-item"><a class="post-nav-next" href="/2021/09/19/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95-1/" rel="next" title="基础算法"><span class="post-nav-text">基础算法</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div class="hty-card" id="comment"><div class="comment-tooltip text-center"><span>要不要和我说些什么？</span><br></div></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2021 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 桜</span></div><div class="powered"><span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v5.4.0</span><span class="footer-separator">|</span><span>Theme - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.6.1</span></div></footer><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a><div class="aplayer no-destroy" id="aplayer" data-id="308168565" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay data-theme="#0078E7" data-loop="all" data-order="list" data-preload="auto" data-volume="0.7" data-mutex data-lrctype="0" data-listfolded data-listmaxheight="340px" data-storagename="metingjs"></div></div></body></html>
